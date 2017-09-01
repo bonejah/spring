@@ -22,6 +22,7 @@ import br.com.springboot.bonejah.services.PersonService;
 @RestController
 @RequestMapping("/person/") //Map requests to localhost: 8080 / person /
 public class PersonController {
+	
 	@Autowired
 	private PersonService personService;
 	
