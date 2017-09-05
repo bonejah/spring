@@ -67,11 +67,8 @@ public class CieloEcommerce {
 	 */
 	public Sale createSale(Sale sale) throws IOException, CieloRequestException {
 		CreateSaleRequest createSaleRequest = new CreateSaleRequest(merchant, environment);
-
 		createSaleRequest.setHttpClient(httpClient);
-
 		sale = createSaleRequest.execute(sale);
-
 		return sale;
 	}
 
