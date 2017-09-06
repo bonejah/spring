@@ -1,5 +1,8 @@
 package com.bonejah.cielo.ecommerce.sdk.ecommerce;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * API Environment URLs
  * <p/>
@@ -26,7 +29,7 @@ public enum Environment implements com.bonejah.cielo.ecommerce.sdk.Environment {
 
 	private final String apiUrl;
 	private final String apiQueryUrl;
-
+	
 	Environment(String apiUrl, String apiQueryUrl) {
 		this.apiUrl = apiUrl;
 		this.apiQueryUrl = apiQueryUrl;

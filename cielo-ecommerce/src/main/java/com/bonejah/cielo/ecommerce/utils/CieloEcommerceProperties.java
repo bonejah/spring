@@ -6,8 +6,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 @Component
-@PropertySource("classpath:application.properties")
 @ConfigurationProperties
+@PropertySource("classpath:application.properties")
 public class CieloEcommerceProperties {
 	
 	@Value("${cielo.ecommerce.sandbox.merchantId}")
@@ -30,5 +30,10 @@ public class CieloEcommerceProperties {
 
 	public void setMerchantKey(String merchantKey) {
 		this.merchantKey = merchantKey;
+	}
+
+	@Override
+	public String toString() {
+		return "CieloEcommerceProperties [merchantId=" + merchantId + ", merchantKey=" + merchantKey + "]";
 	}
 }

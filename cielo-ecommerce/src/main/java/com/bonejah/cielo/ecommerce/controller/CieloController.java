@@ -18,10 +18,11 @@ import com.bonejah.cielo.ecommerce.services.CieloService;
 @RestController
 @RequestMapping("/cielo-ecommerce/")
 public class CieloController {
+	
 	@Autowired
 	private CieloService cieloService;
 
-	@Autowired
+	//@Autowired
 	private Sale sale;
 
 	@ResponseStatus(HttpStatus.OK)
@@ -31,10 +32,10 @@ public class CieloController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "createSale", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "createSale", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Sale createSale() throws IOException, CieloRequestException {
 		try {
-			return cieloService.createSale(sale);
+			return cieloService.createSale();
 		} catch (IOException ioException) {
 			throw new IOException(ioException.getMessage());
 		} catch (CieloRequestException cException) {

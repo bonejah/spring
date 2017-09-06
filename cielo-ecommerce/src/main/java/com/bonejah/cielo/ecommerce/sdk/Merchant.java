@@ -1,8 +1,14 @@
 package com.bonejah.cielo.ecommerce.sdk;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.bonejah.cielo.ecommerce.utils.CieloEcommerceProperties;
+
 /**
  * Merchant identification on Cielo
  */
+@Component
 public class Merchant {
 	/**
 	 * {@link Merchant#getId()}
@@ -14,6 +20,12 @@ public class Merchant {
 	 */
 	private final String key;
 
+	@Autowired
+	public Merchant(CieloEcommerceProperties properties) {
+		this.id = properties.getMerchantId();
+		this.key = properties.getMerchantKey();
+	}
+	
 	public Merchant(String id, String key) {
 		this.id = id;
 		this.key = key;

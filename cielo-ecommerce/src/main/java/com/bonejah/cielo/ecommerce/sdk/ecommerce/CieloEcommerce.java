@@ -3,6 +3,8 @@
 import java.io.IOException;
 
 import org.apache.http.client.HttpClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.bonejah.cielo.ecommerce.sdk.Merchant;
 import com.bonejah.cielo.ecommerce.sdk.ecommerce.request.CieloRequestException;
@@ -17,6 +19,7 @@ import com.bonejah.cielo.ecommerce.sdk.ecommerce.request.UpdateSaleRequest;
 /**
  * The Cielo Ecommerce SDK front-end;
  */
+@Component
 public class CieloEcommerce {
 	private final Merchant merchant;
 	private final Environment environment;
@@ -32,6 +35,7 @@ public class CieloEcommerce {
 	 *            The environment: {@link Environment#PRODUCTION} or
 	 *            {@link Environment#SANDBOX}
 	 */
+
 	public CieloEcommerce(Merchant merchant, Environment environment) {
 		this.merchant = merchant;
 		this.environment = environment;
@@ -43,8 +47,10 @@ public class CieloEcommerce {
 	 * @param merchant
 	 *            The merchant credentials
 	 */
+	@Autowired
 	public CieloEcommerce(Merchant merchant) {
-		this(merchant, Environment.PRODUCTION);
+//		this(merchant, Environment.PRODUCTION);
+		this(merchant, Environment.SANDBOX);
 	}
 
 	public void setHttpClient(HttpClient httpClient) {

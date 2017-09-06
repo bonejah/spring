@@ -1,5 +1,7 @@
 package com.bonejah.cielo.ecommerce.sdk;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Environment configuration interface
  */

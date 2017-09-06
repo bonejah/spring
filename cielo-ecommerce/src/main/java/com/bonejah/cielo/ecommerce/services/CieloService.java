@@ -7,6 +7,5 @@ import com.bonejah.cielo.ecommerce.sdk.ecommerce.request.CieloRequestException;
 
 public interface CieloService {
 	public String teste();
-	public Sale createSale(Sale sale) throws IOException, CieloRequestException;
-
+	public Sale createSale() throws IOException, CieloRequestException;
 }
