@@ -235,7 +235,7 @@ public class CieloEcommerce {
 	public SaleResponse cancelSale(String paymentId) throws IOException, CieloRequestException {
 		return cancelSale(paymentId, null);
 	}
-
+ 
 	/**
 	 * Capture a Sale on Cielo by paymentId and specifying the amount and the
 	 * serviceTaxAmount

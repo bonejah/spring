@@ -11,8 +11,6 @@ import com.bonejah.cielo.ecommerce.sdk.Merchant;
 import com.bonejah.cielo.ecommerce.sdk.ecommerce.CardToken;
 import com.google.gson.GsonBuilder;
 
-
-
 public class CreateCartTokenRequest extends AbstractSaleRequest<CardToken, CardToken> {
 	public CreateCartTokenRequest(Merchant merchant, Environment environment) {
 		super(merchant, environment);
