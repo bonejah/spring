@@ -1,4 +1,4 @@
-package com.cruzeirodosul.cielo.sdk.ecommerce.request;
+package com.cruzeirodosul.cielo.ecommerce.request;
 
 /**
  * Just an exception that can be catch by the app

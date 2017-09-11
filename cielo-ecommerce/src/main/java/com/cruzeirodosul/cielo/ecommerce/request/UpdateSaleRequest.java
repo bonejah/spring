@@ -1,4 +1,4 @@
-package com.cruzeirodosul.cielo.sdk.ecommerce.request;
+package com.cruzeirodosul.cielo.ecommerce.request;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPut;

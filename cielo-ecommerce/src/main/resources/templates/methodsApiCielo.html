@@ -4,13 +4,84 @@
 <head>
 	<title>API Cielo E-Commerce - Methods</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width:  50%;
+		}
+		
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+		
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+	</style>
 </head>
 <body>
 	<div>
+		
+		<!-- 
 		<form action="#" th:action="@{createSale}" method="post" enctype="application/x-www-form-urlencoded">
-			<h1>Cadastrar uam venda</h1>
+			<h1>Venda por Cartão de Crédito</h1>
 			<input type="submit" value="Cadastrar"/>
 		</form>
+		 -->
+		
+		<form th:action="@{createSaleCreditCard}" method="post" enctype="application/x-www-form-urlencoded">
+			<table>
+				<thead>
+					<tr>
+						<th>Operação</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Venda Cartão de Crédito</td>
+						<td><input type="submit" value="Cartão de Crédito" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		
+		<form th:action="@{createSaleDebitCard}" method="post" enctype="application/x-www-form-urlencoded">
+			<table>
+				<tbody>
+					<tr>
+						<td>Venda Cartão de Débito</td>
+						<td><input type="submit" value="Cartão de Débito"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		
+		<form th:action="@{querySale}" method="get" enctype="application/x-www-form-urlencoded">
+			<table>
+				<tbody>
+					<tr>
+						<td>Consulta Venda Cartão Crédito/Débito</td>
+						<td><input type="submit" value="Consulta Venda Cartão Crédito/Débito"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		
+		<form th:action="@{queryMerchantOrderId}" method="get" enctype="application/x-www-form-urlencoded">
+			<table>
+				<tbody>
+					<tr>
+						<td>Consulta Vendas pelo MerchantId</td>
+						<td><input type="submit" value="Consulta Vendas pelo MerchantId"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		
 	</div>	
 </body>
 </html>

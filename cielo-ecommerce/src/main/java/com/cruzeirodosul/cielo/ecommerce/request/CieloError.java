@@ -1,4 +1,4 @@
-package com.cruzeirodosul.cielo.sdk.ecommerce.request;
+package com.cruzeirodosul.cielo.ecommerce.request;
 
 /**
  * Just represent an error sent by Cielo; most of time, client errors.

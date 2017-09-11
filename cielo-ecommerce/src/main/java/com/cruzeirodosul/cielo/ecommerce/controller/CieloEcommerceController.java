@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.cruzeirodosul.cielo.ecommerce.request.CieloError;
+import com.cruzeirodosul.cielo.ecommerce.request.CieloRequestException;
+import com.cruzeirodosul.cielo.ecommerce.sdk.QueryMerchantOrderResponse;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Sale;
 import com.cruzeirodosul.cielo.ecommerce.services.CieloService;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CieloError;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CieloRequestException;
 
 @RestController
 @RequestMapping("/cielo-ecommerce/")
@@ -24,12 +25,6 @@ public class CieloEcommerceController {
 	private CieloService cieloService;
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "testeApiCielo", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String teste() {
-		return cieloService.testeApiCielo();
-	}
-	
-	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "methodsApiCielo", method = RequestMethod.GET)
 	public ModelAndView methodsApiCielo() {
 		ModelAndView modelAndView =  new ModelAndView("methodsApiCielo");
@@ -37,10 +32,10 @@ public class CieloEcommerceController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "createSale", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Sale createSale() throws IOException, CieloRequestException {
+	@RequestMapping(value = "createSaleCreditCard", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale createSaleCreditCard() throws IOException, CieloRequestException {
 		try {
-			Sale saleReturn = cieloService.createSale(new Sale(null));
+			Sale saleReturn = cieloService.createSaleCreditCard(new Sale(null));
 			System.out.println(saleReturn);
 			return saleReturn;
 		} catch (IOException ioException) {
@@ -50,5 +45,48 @@ public class CieloEcommerceController {
 		}
 	}
 	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "createSaleDebitCard", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale createSaleDebitCard() throws IOException, CieloRequestException {
+		try {
+			Sale saleReturn = cieloService.createSaleDebitCard(new Sale(null));
+			System.out.println(saleReturn);
+			return saleReturn;
+		} catch (IOException ioException) {
+			throw new IOException(ioException.getMessage());
+		} catch (CieloRequestException cException) {
+			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+		}
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "querySale", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale querySale() throws IOException, CieloRequestException {
+		try {
+			//String paymentId = "425bd932-49b8-4633-9822-e02e42f27d61";
+			String paymentId = "ac85bbb8-a34d-4627-a028-cb00a68ab261";
+			Sale saleReturn = cieloService.querySale(paymentId);
+			System.out.println(saleReturn);
+			return saleReturn;
+		} catch (IOException ioException) {
+			throw new IOException(ioException.getMessage());
+		} catch (CieloRequestException cException) {
+			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+		}
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "queryMerchantOrderId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public QueryMerchantOrderResponse queryMerchantOrderId() throws IOException, CieloRequestException {
+		try {
+			String merchantOrderId = "2014111717";
+			QueryMerchantOrderResponse merchantOrderResponse = cieloService.queryMerchantOrder(merchantOrderId );
+			return merchantOrderResponse;
+		} catch (IOException ioException) {
+			throw new IOException(ioException.getMessage());
+		} catch (CieloRequestException cException) {
+			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+		}
+	}
 	
 }

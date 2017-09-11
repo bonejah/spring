@@ -6,14 +6,14 @@ import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CieloRequestException;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CreateCartTokenRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CreateSaleRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.DeactivateRecurrentSaleRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.QueryMerchantOrderRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.QueryRecurrentSaleRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.QuerySaleRequest;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.UpdateSaleRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.CieloRequestException;
+import com.cruzeirodosul.cielo.ecommerce.request.CreateCartTokenRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.CreateSaleRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.DeactivateRecurrentSaleRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.QueryMerchantOrderRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.QueryRecurrentSaleRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.QuerySaleRequest;
+import com.cruzeirodosul.cielo.ecommerce.request.UpdateSaleRequest;
 
 /**
  * The Cielo Ecommerce SDK front-end;

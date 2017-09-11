@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bonejah.cielo.ecommerce"})
+@ComponentScan(basePackages = {"com.cruzeirodosul.cielo"})
 @EnableAutoConfiguration
 /*@EnableWebMvc*/
 public class CieloEcommerceApplication {

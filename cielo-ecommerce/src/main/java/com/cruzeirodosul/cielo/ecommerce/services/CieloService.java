@@ -2,12 +2,12 @@ package com.cruzeirodosul.cielo.ecommerce.services;
 
 import java.io.IOException;
 
+import com.cruzeirodosul.cielo.ecommerce.request.CieloRequestException;
 import com.cruzeirodosul.cielo.ecommerce.sdk.CardToken;
 import com.cruzeirodosul.cielo.ecommerce.sdk.QueryMerchantOrderResponse;
 import com.cruzeirodosul.cielo.ecommerce.sdk.RecurrentSale;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Sale;
 import com.cruzeirodosul.cielo.ecommerce.sdk.SaleResponse;
-import com.cruzeirodosul.cielo.sdk.ecommerce.request.CieloRequestException;
 
 /**
  * This Interface contains all methods API Cielo 3.0
@@ -17,9 +17,8 @@ import com.cruzeirodosul.cielo.sdk.ecommerce.request.CieloRequestException;
  * 
  */
 public interface CieloService {
-	public String testeApiCielo();
-	
-	public Sale createSale(Sale sale) throws IOException, CieloRequestException;
+	public Sale createSaleCreditCard(Sale sale) throws IOException, CieloRequestException;
+	public Sale createSaleDebitCard(Sale sale) throws IOException, CieloRequestException;
 	public Sale querySale(String paymentId) throws IOException, CieloRequestException;
 	
 	public CardToken createCardToken(CardToken cardToken) throws IOException, CieloRequestException;

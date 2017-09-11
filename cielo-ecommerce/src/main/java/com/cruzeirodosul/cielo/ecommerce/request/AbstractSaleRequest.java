@@ -1,4 +1,4 @@
-package com.cruzeirodosul.cielo.sdk.ecommerce.request;
+package com.cruzeirodosul.cielo.ecommerce.request;
 
 import java.io.BufferedReader;
 import java.io.IOException;
