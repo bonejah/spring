@@ -18,6 +18,10 @@ import com.cruzeirodosul.cielo.ecommerce.request.UpdateSaleRequest;
 /**
  * The Cielo Ecommerce SDK front-end;
  */
+/**
+ * @author bplima
+ *
+ */
 @Component
 public class CieloEcommerce {
 	private final Merchant merchant;

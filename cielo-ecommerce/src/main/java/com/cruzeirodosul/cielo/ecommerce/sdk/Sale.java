@@ -1,8 +1,12 @@
 package com.cruzeirodosul.cielo.ecommerce.sdk;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Sale {
+public class Sale implements Serializable {
+	private static final long serialVersionUID = 4031062902948447213L;
+
 	@SerializedName("MerchantOrderId")
 	private String merchantOrderId;
 
@@ -11,6 +15,8 @@ public class Sale {
 
 	@SerializedName("Payment")
 	private Payment payment;
+	
+	public Sale() {}
 
 	public Sale(String merchantOrderId) {
 		this.merchantOrderId = merchantOrderId;
@@ -57,5 +63,10 @@ public class Sale {
 	public Sale setPayment(Payment payment) {
 		this.payment = payment;
 		return this;
+	}
+
+	@Override
+	public String toString() {
+		return "Sale [merchantOrderId=" + merchantOrderId + ", customer=" + customer + ", payment=" + payment + "]";
 	}
 }

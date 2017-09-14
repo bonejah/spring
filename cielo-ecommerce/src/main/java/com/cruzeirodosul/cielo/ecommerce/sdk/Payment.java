@@ -1,8 +1,12 @@
 package com.cruzeirodosul.cielo.ecommerce.sdk;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Payment {
+public class Payment implements Serializable {
+	private static final long serialVersionUID = 7160580913593148791L;
+
 	@SerializedName("ServiceTaxAmount")
 	private Integer serviceTaxAmount;
 	
@@ -122,6 +126,8 @@ public class Payment {
 	
 	@SerializedName("AuthenticationUrl")
 	private String authenticationUrl;
+	
+	public Payment() {}
 
 	public Payment(Integer amount, Integer installments) {
 		setAmount(amount);

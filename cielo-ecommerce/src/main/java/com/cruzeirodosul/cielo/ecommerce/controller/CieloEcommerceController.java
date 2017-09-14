@@ -5,8 +5,10 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,17 +34,24 @@ public class CieloEcommerceController {
 	}
 
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "createSaleCreditCard", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Sale createSaleCreditCard() throws IOException, CieloRequestException {
+	@RequestMapping(value = "createSaleCreditCard", method = RequestMethod.POST
+		,produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale createSaleCreditCard(@RequestBody Sale sale) throws IOException, CieloRequestException {
 		try {
-			Sale saleReturn = cieloService.createSaleCreditCard(new Sale(null));
-			System.out.println(saleReturn);
-			return saleReturn;
-		} catch (IOException ioException) {
-			throw new IOException(ioException.getMessage());
-		} catch (CieloRequestException cException) {
-			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+			System.out.println(sale);
+			
+//			Sale saleReturn = cieloService.createSaleCreditCard(sale);
+//			System.out.println(saleReturn);
+//			return saleReturn;
+			return sale;
+		} finally {
+			
 		}
+//		} catch (IOException ioException) {
+//			throw new IOException(ioException.getMessage());
+//		} catch (CieloRequestException cException) {
+//			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+//		}
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
