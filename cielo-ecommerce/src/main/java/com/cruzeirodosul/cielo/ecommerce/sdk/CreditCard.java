@@ -23,6 +23,8 @@ public class CreditCard {
 
 	@SerializedName("CardToken")
 	private String cardToken;
+	
+	public CreditCard() {}
 
 	public CreditCard(String securityCode, String brand) {
 		setSecurityCode(securityCode);

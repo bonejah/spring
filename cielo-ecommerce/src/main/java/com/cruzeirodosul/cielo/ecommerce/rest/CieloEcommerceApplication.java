@@ -9,7 +9,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.cruzeirodosul.cielo.ecommerce"})
 @EnableAutoConfiguration
-/*@EnableWebMvc*/
 public class CieloEcommerceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CieloEcommerceApplication.class, args);

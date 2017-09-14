@@ -5,10 +5,10 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +19,13 @@ import com.cruzeirodosul.cielo.ecommerce.sdk.QueryMerchantOrderResponse;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Sale;
 import com.cruzeirodosul.cielo.ecommerce.services.CieloService;
 
+/**
+ * This class represents the controller for all requisitions with Cielo Ecommerce
+ * 
+ * @since 06/09/2017
+ * @author bplima
+ * 
+ */
 @RestController
 @RequestMapping("/cielo-ecommerce/")
 public class CieloEcommerceController {
@@ -35,31 +42,11 @@ public class CieloEcommerceController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@RequestMapping(value = "createSaleCreditCard", method = RequestMethod.POST
+		,consumes = MediaType.APPLICATION_JSON_VALUE
 		,produces = MediaType.APPLICATION_JSON_VALUE)
 	public Sale createSaleCreditCard(@RequestBody Sale sale) throws IOException, CieloRequestException {
 		try {
-			System.out.println(sale);
-			
-//			Sale saleReturn = cieloService.createSaleCreditCard(sale);
-//			System.out.println(saleReturn);
-//			return saleReturn;
-			return sale;
-		} finally {
-			
-		}
-//		} catch (IOException ioException) {
-//			throw new IOException(ioException.getMessage());
-//		} catch (CieloRequestException cException) {
-//			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
-//		}
-	}
-	
-	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "createSaleDebitCard", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Sale createSaleDebitCard() throws IOException, CieloRequestException {
-		try {
-			Sale saleReturn = cieloService.createSaleDebitCard(new Sale(null));
-			System.out.println(saleReturn);
+			Sale saleReturn = cieloService.createSaleCreditCard(sale);
 			return saleReturn;
 		} catch (IOException ioException) {
 			throw new IOException(ioException.getMessage());
@@ -69,13 +56,25 @@ public class CieloEcommerceController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "querySale", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Sale querySale() throws IOException, CieloRequestException {
+	@RequestMapping(value = "createSaleDebitCard", method = RequestMethod.POST
+		,consumes = MediaType.APPLICATION_JSON_VALUE
+		,produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale createSaleDebitCard(@RequestBody Sale sale) throws IOException, CieloRequestException {
 		try {
-			//String paymentId = "425bd932-49b8-4633-9822-e02e42f27d61";
-			String paymentId = "ac85bbb8-a34d-4627-a028-cb00a68ab261";
+			Sale saleReturn = cieloService.createSaleDebitCard(sale);
+			return saleReturn;
+		} catch (IOException ioException) {
+			throw new IOException(ioException.getMessage());
+		} catch (CieloRequestException cException) {
+			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
+		}
+	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	@RequestMapping(value = "querySale/{paymentId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public Sale querySale(@PathVariable String paymentId) throws IOException, CieloRequestException {
+		try {
 			Sale saleReturn = cieloService.querySale(paymentId);
-			System.out.println(saleReturn);
 			return saleReturn;
 		} catch (IOException ioException) {
 			throw new IOException(ioException.getMessage());
@@ -85,11 +84,10 @@ public class CieloEcommerceController {
 	}
 	
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "queryMerchantOrderId", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public QueryMerchantOrderResponse queryMerchantOrderId() throws IOException, CieloRequestException {
+	@RequestMapping(value = "queryMerchantOrderId/{merchantOrderId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public QueryMerchantOrderResponse queryMerchantOrderId(@PathVariable String merchantOrderId) throws IOException, CieloRequestException {
 		try {
-			String merchantOrderId = "2014111717";
-			QueryMerchantOrderResponse merchantOrderResponse = cieloService.queryMerchantOrder(merchantOrderId );
+			QueryMerchantOrderResponse merchantOrderResponse = cieloService.queryMerchantOrder(merchantOrderId);
 			return merchantOrderResponse;
 		} catch (IOException ioException) {
 			throw new IOException(ioException.getMessage());
@@ -97,5 +95,4 @@ public class CieloEcommerceController {
 			throw new CieloRequestException(cException.getMessage(), new CieloError(0, ""), new Throwable());
 		}
 	}
-	
 }

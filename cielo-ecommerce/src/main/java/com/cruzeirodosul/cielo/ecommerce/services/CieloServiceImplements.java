@@ -8,12 +8,7 @@ import org.springframework.stereotype.Service;
 import com.cruzeirodosul.cielo.ecommerce.request.CieloRequestException;
 import com.cruzeirodosul.cielo.ecommerce.sdk.CardToken;
 import com.cruzeirodosul.cielo.ecommerce.sdk.CieloEcommerce;
-import com.cruzeirodosul.cielo.ecommerce.sdk.CreditCard;
-import com.cruzeirodosul.cielo.ecommerce.sdk.Customer;
-import com.cruzeirodosul.cielo.ecommerce.sdk.DebitCard;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Merchant;
-import com.cruzeirodosul.cielo.ecommerce.sdk.Payment;
-import com.cruzeirodosul.cielo.ecommerce.sdk.Payment.Type;
 import com.cruzeirodosul.cielo.ecommerce.sdk.QueryMerchantOrderResponse;
 import com.cruzeirodosul.cielo.ecommerce.sdk.RecurrentSale;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Sale;
@@ -41,15 +36,13 @@ public class CieloServiceImplements implements CieloService {
 
 	@Override
 	public Sale createSaleCreditCard(Sale sale) throws IOException, CieloRequestException {
-		readObjectsAutowired();	
-		sale = createObjectSale(Type.CreditCard);
+		setPropertiesEcommerce();	
 		return this.cieloEcommerce.createSale(sale);
 	}
 	
 	@Override
 	public Sale createSaleDebitCard(Sale sale) throws IOException, CieloRequestException {
-		readObjectsAutowired();	
-		sale = createObjectSale(Type.DebitCard);
+		setPropertiesEcommerce();	
 		return this.cieloEcommerce.createSale(sale);
 	}
 	
@@ -115,40 +108,10 @@ public class CieloServiceImplements implements CieloService {
 		return saleResponse;
 	}
 	
-	private void readObjectsAutowired() {
+	private void setPropertiesEcommerce() {
 		System.out.println("CieloProperties - merchantId: " + this.cieloProperties.getMerchantId() + ", merchantKey: "
 				+ this.cieloProperties.getMerchantKey());
 		System.out.println("Merchant: " + this.merchant);
 		System.out.println("CieloEcommerce: " + this.cieloEcommerce);
-	}
-
-	private Sale createObjectSale(Type typeSale) {
-		Sale sale = null;
-		String merchantOrderId = "2014111717";
-		Customer customer = new Customer("Bruno Lima");
-		Payment payment = null; 
-		
-		if (typeSale.equals(Type.CreditCard)) {
-			payment = new Payment(7000, 1);
-			payment.setType(Type.CreditCard);
-			payment.setSoftDescriptor("123456789ABCD");
-			payment.setCreditCard(new CreditCard("123", "Visa"));
-			payment.getCreditCard().setCardNumber("1234123412341231");
-			payment.getCreditCard().setHolder("Teste Holder");
-			payment.getCreditCard().setExpirationDate("12/2030");
-		} else if (typeSale.equals(Type.DebitCard)) {
-			payment = new Payment(15700);
-			payment.setType(Type.DebitCard);
-			payment.setReturnUrl("http://www.cielo.com,br");
-			payment.setDebitCard(new DebitCard("123", "Visa"));
-			payment.getDebitCard().setCardNumber("4551870000000183");
-			payment.getDebitCard().setHolder("Teste Bruno Lima");
-			payment.getDebitCard().setExpirationDate("12/2030");
-		}
-		
-		sale = new Sale(merchantOrderId);
-		sale.setCustomer(customer);
-		sale.setPayment(payment);
-		return sale;
 	}	
 }

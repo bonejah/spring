@@ -18,6 +18,8 @@ public class DebitCard {
 	
 	@SerializedName("Brand")
 	private String brand;
+	
+	public DebitCard() {}
 
 	public DebitCard(String securityCode, String brand) {
 		setSecurityCode(securityCode);

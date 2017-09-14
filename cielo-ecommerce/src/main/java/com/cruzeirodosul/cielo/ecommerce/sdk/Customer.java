@@ -1,12 +1,8 @@
 package com.cruzeirodosul.cielo.ecommerce.sdk;
 
-import java.io.Serializable;
-
 import com.google.gson.annotations.SerializedName;
 
-public class Customer implements Serializable {
-	private static final long serialVersionUID = 7554675551555848899L;
-
+public class Customer {
 	@SerializedName("Name")
 	private String name;
 
@@ -29,7 +25,7 @@ public class Customer implements Serializable {
 	private Address deliveryAddress;
 	
 	public Customer() {}
-	
+
 	public Customer(String name) {
 		setName(name);
 	}
