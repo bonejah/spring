@@ -3,7 +3,7 @@ package com.cruzeirodosul.cielo.ecommerce.sdk;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.cruzeirodosul.cielo.ecommerce.utils.CieloEcommerceProperties;
+import com.cruzeirodosul.cielo.ecommerce.configuration.CieloEcommerceProperties;
 
 /**
  * Merchant identification on Cielo

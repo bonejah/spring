@@ -1,4 +1,4 @@
-package com.cruzeirodosul.cielo.ecommerce.utils;
+package com.cruzeirodosul.cielo.ecommerce.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;

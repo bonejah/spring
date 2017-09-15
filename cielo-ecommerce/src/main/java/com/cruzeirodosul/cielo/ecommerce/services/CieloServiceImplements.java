@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cruzeirodosul.cielo.ecommerce.configuration.CieloEcommerceProperties;
 import com.cruzeirodosul.cielo.ecommerce.request.CieloRequestException;
 import com.cruzeirodosul.cielo.ecommerce.sdk.CardToken;
 import com.cruzeirodosul.cielo.ecommerce.sdk.CieloEcommerce;
@@ -13,7 +14,6 @@ import com.cruzeirodosul.cielo.ecommerce.sdk.QueryMerchantOrderResponse;
 import com.cruzeirodosul.cielo.ecommerce.sdk.RecurrentSale;
 import com.cruzeirodosul.cielo.ecommerce.sdk.Sale;
 import com.cruzeirodosul.cielo.ecommerce.sdk.SaleResponse;
-import com.cruzeirodosul.cielo.ecommerce.utils.CieloEcommerceProperties;
 
 /**
  * This class contains implemantation of all methods API Cielo 3.0

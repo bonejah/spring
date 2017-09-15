@@ -1,5 +1,9 @@
 package com.cruzeirodosul.cielo.ecommerce.sdk;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Sale {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cruzeirodosul.cielo.ecommerce.utils.CieloEcommerceProperties;
+import com.cruzeirodosul.cielo.ecommerce.configuration.CieloEcommerceProperties;
 
 @RestController
 @RequestMapping("/cielo-ecommerce/")
