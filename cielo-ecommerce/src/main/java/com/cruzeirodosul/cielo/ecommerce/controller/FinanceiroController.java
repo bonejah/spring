@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cruzeirodosul.cielo.ecommerce.model.Transacao;
+import com.cruzeirodosul.cielo.ecommerce.dto.TransacaoDTO;
 import com.cruzeirodosul.cielo.ecommerce.services.FinanceiroService;
 
 @RestController
@@ -22,11 +22,11 @@ public class FinanceiroController {
 	FinanceiroService financeiroService;
 	
 	@ResponseStatus(HttpStatus.OK)
-	@RequestMapping(value = "consultaTransacao/{idTrn}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Transacao consultaTransacao(@PathVariable String idTrn) throws IOException {
+	@RequestMapping(value = "validaTransacaoCieloEcommerce/{idTrn}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public TransacaoDTO validaTransacaoCieloEcommerce(@PathVariable String idTrn) throws IOException {
 		try {
-			Transacao transacao = financeiroService.consultaTransacao(idTrn);
-			return transacao;
+			TransacaoDTO transacaoDto = financeiroService.validaTransacaoCieloEcommerce(idTrn);
+			return transacaoDto;
 		} catch (IOException ioException) {
 			throw new IOException(ioException.getMessage());
 		} 

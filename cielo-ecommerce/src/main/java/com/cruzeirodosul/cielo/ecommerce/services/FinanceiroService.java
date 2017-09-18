@@ -2,9 +2,8 @@ package com.cruzeirodosul.cielo.ecommerce.services;
 
 import java.io.IOException;
 
-import com.cruzeirodosul.cielo.ecommerce.model.Transacao;
-
+import com.cruzeirodosul.cielo.ecommerce.dto.TransacaoDTO;
 
 public interface FinanceiroService {
-	Transacao consultaTransacao(String idTrn) throws IOException;
+	TransacaoDTO validaTransacaoCieloEcommerce(String idTrn) throws IOException;
 }
