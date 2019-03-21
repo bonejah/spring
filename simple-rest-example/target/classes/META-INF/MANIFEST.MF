@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: brunolima
 Build-Jdk: 10.0.1
@@ -7,3 +8,14 @@ Implementation-Vendor-Id: br.com.springboot.bonejah
 Implementation-Vendor: Pivotal Software, Inc.
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Implementation-Title: simple-rest-example
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: bplima
+Implementation-Vendor-Id: br.com.springboot.bonejah
+Build-Jdk: 1.8.0_144
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+
+>>>>>>> 944ac21f0027009929e83abd84e46a49eb155950
