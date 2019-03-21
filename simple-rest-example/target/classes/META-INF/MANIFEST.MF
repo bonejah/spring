@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
+Built-By: brunolima
+Build-Jdk: 10.0.1
 Implementation-Title: simple-rest-example
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: brunolima
 Implementation-Vendor-Id: br.com.springboot.bonejah
-Build-Jdk: 1.8.0_121
-Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
+Created-By: Maven Integration for Eclipse
 
