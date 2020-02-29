@@ -2,13 +2,12 @@ package com.learnreactivespring.playground;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 public class FluxAndMonoCombineTest {
-
 	
 	@Test
 	public void combineUsingMerge() {

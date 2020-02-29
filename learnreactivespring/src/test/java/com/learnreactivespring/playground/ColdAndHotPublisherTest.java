@@ -2,7 +2,7 @@ package com.learnreactivespring.playground;
 
 import java.time.Duration;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;

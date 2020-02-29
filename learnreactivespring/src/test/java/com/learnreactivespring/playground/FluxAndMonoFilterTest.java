@@ -3,7 +3,7 @@ package com.learnreactivespring.playground;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
