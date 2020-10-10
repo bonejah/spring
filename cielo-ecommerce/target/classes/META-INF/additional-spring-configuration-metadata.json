@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "cielo.ecommerce.sandbox.merchantId",
+    "type": "java.lang.String",
+    "description": "A description for 'cielo.ecommerce.sandbox.merchantId'"
+  },
+  {
+    "name": "cielo.ecommerce.sandbox.merchantKey",
+    "type": "java.lang.String",
+    "description": "A description for 'cielo.ecommerce.sandbox.merchantKey'"
+  }
+]}
