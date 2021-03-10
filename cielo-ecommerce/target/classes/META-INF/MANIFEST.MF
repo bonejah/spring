@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: brunolima
+Build-Jdk: 15.0.1
+Implementation-Title: cielo-ecommerce
+Implementation-Version: 1.0.0-SNAPSHOT
+Implementation-Vendor-Id: com.cruzeirodosul
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-URL: http://projects.spring.io/spring-boot/cielo-ecommerc
+ e/
+Created-By: Maven Integration for Eclipse
+
