@@ -75,7 +75,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		
 		response.getWriter().write(token);
 		response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-						
 	}
 
 }
