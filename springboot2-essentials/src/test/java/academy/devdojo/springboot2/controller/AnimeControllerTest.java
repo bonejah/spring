@@ -18,7 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.domain.Movie;
 import academy.devdojo.springboot2.requests.AnimePostRequestBody;
 import academy.devdojo.springboot2.requests.AnimePutRequestBody;
 import academy.devdojo.springboot2.service.AnimeService;
@@ -41,7 +41,7 @@ public class AnimeControllerTest {
 
 	@BeforeEach
 	void setup() {
-		PageImpl<Anime> animePage = new PageImpl<>(List.of(AnimeCreator.createValidAnime()));
+		PageImpl<Movie> animePage = new PageImpl<>(List.of(AnimeCreator.createValidAnime()));
 
 		BDDMockito.when(animeServiceMock.listAll(ArgumentMatchers.any())).thenReturn(animePage);
 
@@ -66,7 +66,7 @@ public class AnimeControllerTest {
 	void list_ReturnsListOfAnimesInsidePageObject_WhenSuccessful() {
 		String expectedName = AnimeCreator.createValidAnime().getName();
 
-		Page<Anime> animePage = animeController.list(null).getBody();
+		Page<Movie> animePage = animeController.list(null).getBody();
 
 		Assertions.assertThat(animePage).isNotNull();
 
@@ -80,7 +80,7 @@ public class AnimeControllerTest {
 	void listAll_ReturnsListOfAnimes_WhenSuccessful() {
 		String expectedName = AnimeCreator.createValidAnime().getName();
 
-		List<Anime> animes = animeController.listAll().getBody();
+		List<Movie> animes = animeController.listAll().getBody();
 
 		Assertions.assertThat(animes).isNotNull().isNotEmpty().hasSize(1);
 
@@ -92,7 +92,7 @@ public class AnimeControllerTest {
 	void findById_ReturnsAnime_WhenSuccessful() {
 		Long expectedId = AnimeCreator.createValidAnime().getId();
 
-		Anime anime = animeController.findById(1L).getBody();
+		Movie anime = animeController.findById(1L).getBody();
 
 		Assertions.assertThat(anime).isNotNull();
 
@@ -104,7 +104,7 @@ public class AnimeControllerTest {
 	void findByName_ReturnsListOfAnime_WhenSuccessful() {
 		String expectedName = AnimeCreator.createValidAnime().getName();
 
-		List<Anime> animes = animeController.findByName("anime").getBody();
+		List<Movie> animes = animeController.findByName("anime").getBody();
 
 		Assertions.assertThat(animes).isNotNull().isNotEmpty().hasSize(1);
 
@@ -117,7 +117,7 @@ public class AnimeControllerTest {
 		BDDMockito.when(animeServiceMock.findByName(ArgumentMatchers.anyString()))
 			.thenReturn(Collections.emptyList());
 
-		List<Anime> animes = animeController.findByName("anime").getBody();
+		List<Movie> animes = animeController.findByName("anime").getBody();
 
 		Assertions.assertThat(animes).isNotNull().isEmpty();		
 	}
@@ -125,7 +125,7 @@ public class AnimeControllerTest {
 	@Test
 	@DisplayName("save returns anime when successful")
 	void save_ReturnsAnime_WhenSuccessful() {
-		Anime anime = animeController.save(AnimePostRequestBodyCreator.createAnimePostRequestBody()).getBody();
+		Movie anime = animeController.save(AnimePostRequestBodyCreator.createAnimePostRequestBody()).getBody();
 
 		Assertions.assertThat(anime).isNotNull().isEqualTo(AnimeCreator.createValidAnime());
 	}

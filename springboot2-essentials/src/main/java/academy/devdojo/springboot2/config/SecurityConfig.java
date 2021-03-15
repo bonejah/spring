@@ -35,33 +35,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable()
 //			.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()).and()
 			.authorizeRequests()
-			.antMatchers("/animes/admin/**").hasRole("ADMIN")
-			.antMatchers("/animes/**").hasRole("USER")
-			.antMatchers("/actuator/**").permitAll()
+				.antMatchers("/animes/admin/**").hasRole("ADMIN")
+				.antMatchers("/animes/**").hasRole("USER")
+				.antMatchers("/actuator/**").permitAll()
 			.anyRequest()
-			.authenticated()
+				.authenticated()
 			.and()
-			.formLogin()
-			.and()
-			.httpBasic();
+				.formLogin().and().httpBasic();
 	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		
-		log.info("Password encoded {}", passwordEncoder.encode("academy"));
+		log.info("Password encoded {}", passwordEncoder.encode("devdojo"));
 		
-		// Providers:
-		// InMemory
-		auth.inMemoryAuthentication()
-			.withUser("bonejah2")
-			.password(passwordEncoder.encode("academy"))
-			.roles("USER", "ADMIN")
-			.and()
-			.withUser("devdojo2")
-			.password(passwordEncoder.encode("academy"))
-			.roles("USER");
+		// Providers InMemory
+//		auth.inMemoryAuthentication()
+//			.withUser("bonejah")
+//			.password(passwordEncoder.encode("bonejah"))
+//			.roles("USER", "ADMIN")
+//			.and()
+//			.withUser("devdojo")
+//			.password(passwordEncoder.encode("devdojo"))
+//			.roles("USER");
 		
 		// DataBase
 		auth.userDetailsService(devDojoUserDetailsService).passwordEncoder(passwordEncoder);

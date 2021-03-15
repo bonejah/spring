@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.domain.Movie;
 import academy.devdojo.springboot2.exception.BadRequestException;
 import academy.devdojo.springboot2.mapper.AnimeMapper;
 import academy.devdojo.springboot2.repository.AnimeRepository;
@@ -22,26 +22,26 @@ public class AnimeService {
 	
 	private final AnimeRepository animeRepository;
 	
-	public Page<Anime> listAll(Pageable pageable) {
+	public Page<Movie> listAll(Pageable pageable) {
 		return animeRepository.findAll(pageable);
 	}
 	
-	public List<Anime> listAllNonPageable() {
+	public List<Movie> listAllNonPageable() {
 		return animeRepository.findAll();
 	}
 	
 	
-	public List<Anime> findByName(String name) {
+	public List<Movie> findByName(String name) {
 		return animeRepository.findByName(name);
 	}
 	
-	public Anime findById(Long id) {
+	public Movie findById(Long id) {
 		return animeRepository.findById(id)
 				.orElseThrow(() -> new BadRequestException("Anime Not Found."));
 	}
 
 	@Transactional(rollbackOn = Exception.class)
-	public Anime save(AnimePostRequestBody animePostRequestBody) {
+	public Movie save(AnimePostRequestBody animePostRequestBody) {
 		return animeRepository.save(AnimeMapper.INSTANCE.toAnime(animePostRequestBody));
 	}
 
@@ -52,9 +52,9 @@ public class AnimeService {
 
 	@Transactional
 	public void update(AnimePutRequestBody animePutRequestBody) {
-		Anime animeSaved = findById(animePutRequestBody.getId());
+		Movie animeSaved = findById(animePutRequestBody.getId());
 		
-		Anime anime = AnimeMapper.INSTANCE.toAnime(animePutRequestBody);
+		Movie anime = AnimeMapper.INSTANCE.toAnime(animePutRequestBody);
 		anime.setId(animeSaved.getId());
 		
 		animeRepository.save(anime);

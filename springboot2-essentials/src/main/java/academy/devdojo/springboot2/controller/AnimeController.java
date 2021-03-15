@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.domain.Movie;
 import academy.devdojo.springboot2.requests.AnimePostRequestBody;
 import academy.devdojo.springboot2.requests.AnimePutRequestBody;
 import academy.devdojo.springboot2.service.AnimeService;
@@ -48,28 +48,28 @@ public class AnimeController {
 			summary = "List all animes paginated", 
 			description = "The default size is 20, use the parameter size to change the default value", 
 			tags = {"anime"})
-	public ResponseEntity<Page<Anime>> list(@ParameterObject Pageable pageable) {
+	public ResponseEntity<Page<Movie>> list(@ParameterObject Pageable pageable) {
 		log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
 		
 		return ResponseEntity.ok(animeService.listAll(pageable));
 	}
 	
 	@GetMapping(path = "/all")
-	public ResponseEntity<List<Anime>> listAll() {
+	public ResponseEntity<List<Movie>> listAll() {
 		log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
 		
 		return ResponseEntity.ok(animeService.listAllNonPageable());
 	}
 	
 	@GetMapping(path = "/{id}")
-	public ResponseEntity<Anime> findById(@PathVariable long id) {
+	public ResponseEntity<Movie> findById(@PathVariable long id) {
 		log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
 		
 		return ResponseEntity.ok(animeService.findById(id));
 	}
 	
 	@GetMapping(path = "by-id/{id}")
-	public ResponseEntity<Anime> findByIdAuthenticatonPrincipal(@PathVariable long id,
+	public ResponseEntity<Movie> findByIdAuthenticatonPrincipal(@PathVariable long id,
 			@AuthenticationPrincipal UserDetails userDetails) {
 		log.info("userDetails {}", userDetails);
 		
@@ -79,7 +79,7 @@ public class AnimeController {
 	}
 	
 	@GetMapping(path = "/find")
-	public ResponseEntity<List<Anime>> findByName(@RequestParam String name) {
+	public ResponseEntity<List<Movie>> findByName(@RequestParam String name) {
 		log.info(dateUtil.formatLocalDateTimeToDatabaseStyle(LocalDateTime.now()));
 		
 		return ResponseEntity.ok(animeService.findByName(name));
@@ -87,7 +87,7 @@ public class AnimeController {
 	
 	@PostMapping
 //	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<Anime> save(@Valid @RequestBody AnimePostRequestBody animePostRequestBody) {
+	public ResponseEntity<Movie> save(@Valid @RequestBody AnimePostRequestBody animePostRequestBody) {
 		return new ResponseEntity<>(animeService.save(animePostRequestBody), HttpStatus.CREATED);
 	}
 	

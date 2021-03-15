@@ -1,25 +1,25 @@
 package academy.devdojo.springboot2.util;
 
-import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.domain.Movie;
 
 public class AnimeCreator {
 	
 
-	public static Anime createAnimeToBeSaved() {
-		return Anime.builder()
+	public static Movie createAnimeToBeSaved() {
+		return Movie.builder()
 				.name("Hajime no Ippo")
 				.build();
 	}
 	
-	public static Anime createValidAnime() {
-		return Anime.builder()
+	public static Movie createValidAnime() {
+		return Movie.builder()
 				.name("Hajime no Ippo")
 				.id(1L)
 				.build();
 	}
 	
-	public static Anime createValidUpdatedAnime() {
-		return Anime.builder()
+	public static Movie createValidUpdatedAnime() {
+		return Movie.builder()
 				.name("Hajime no Ippo")
 				.id(1L)
 				.build();

@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Anime {
+public class Movie {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

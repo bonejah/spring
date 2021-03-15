@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import academy.devdojo.springboot2.domain.Anime;
+import academy.devdojo.springboot2.domain.Movie;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -31,18 +31,18 @@ public class SpringClient {
 //		Anime anime = new RestTemplate().postForObject("http://localhost:8087/animes", kingdom, Anime.class);
 //		log.info("Anime: " + anime);
 		
-		Anime samuraiChamploo = Anime.builder().name("Samurai Champloo").build();
+		Movie samuraiChamploo = Movie.builder().name("Samurai Champloo").build();
 		
-		ResponseEntity<Anime> samuraiChamplooSaved = new RestTemplate().exchange(
+		ResponseEntity<Movie> samuraiChamplooSaved = new RestTemplate().exchange(
 				"http://localhost:8087/animes", 
 				HttpMethod.POST, 
 				new HttpEntity<>(samuraiChamploo, createJsonHeader()),
-				Anime.class);
+				Movie.class);
 		
 		log.info("Response PostExchange {} ",  samuraiChamplooSaved);
 		
 		
-		Anime animeToBeUpdated = samuraiChamplooSaved.getBody();
+		Movie animeToBeUpdated = samuraiChamplooSaved.getBody();
 		animeToBeUpdated.setName("Samurai Champloo 2");
 		
 		ResponseEntity<Void> samuraiChamplooUpdated = new RestTemplate().exchange(

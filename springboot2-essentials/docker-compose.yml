@@ -35,15 +35,16 @@ services:
     - "3000:3000"
     mem_limit: 128m
     
-  springboot2-essentials:
-    image: bonejah/springboot2-essentials:0.0.1-SNAPSHOT
-    ports:
-    - "8087:8087"
-    environment:
-      <<: *database-variables
-    mem_limit: 512m
+#  springboot2-essentials:
+#    image: bonejah/springboot2-essentials:0.0.1-SNAPSHOT
+#    ports:
+#    - "8087:8087"
+#    environment:
+#      <<: *database-variables
+#    mem_limit: 512m
     
     
     
 volumes:
   devdojo_data: 
+  
